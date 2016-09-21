@@ -30,3 +30,4 @@ build/*
 
 # spring
 .springBeans
+/target/
