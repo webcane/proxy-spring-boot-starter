@@ -31,3 +31,4 @@ build/*
 # spring
 .springBeans
 /target/
+/.apt_generated/
