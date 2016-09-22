@@ -8,6 +8,8 @@ import org.springframework.boot.context.properties.EnableConfigurationProperties
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+import cane.brothers.spring.api.ICanProxy;
+
 @Configuration
 @ConditionalOnProperty(prefix = "proxy", name = "host")
 @EnableConfigurationProperties(ProxyProperties.class)
@@ -19,10 +21,14 @@ public class ProxyAutoConfiguration {
 	private ProxyProperties properties;
 	
 	@Bean
-	public Object setProxy() {
-		log.info("configure proxy via system properties");
-		System.setProperty("http.proxyHost", properties.getProxyHost());
-		System.setProperty("http.proxyPort", properties.getProxyPort());
-		return new Object();
+	public ICanProxy getSystemProxy() {
+		return new ICanProxy() {
+			@Override
+			public void configure() {
+				log.info("configure proxy via system properties");
+				System.setProperty("http.proxyHost", properties.getProxyHost());
+				System.setProperty("http.proxyPort", properties.getProxyPort());
+			}
+		};
 	}
 }
