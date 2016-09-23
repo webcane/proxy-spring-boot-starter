@@ -11,11 +11,11 @@ spring boot приложению может понадоиться работа�
 ```
 2. добавить maven зависимость 
 ```xml
-      <dependency>
-          <groupId>cane.brothers.spring</groupId>
-			    <artifactId>http-proxy-starter</artifactId>
-			    <version>1.0.0</version>
-      </dependency>
+    <dependency>
+        <groupId>cane.brothers.spring</groupId>
+	<artifactId>http-proxy-starter</artifactId>
+	<version>1.0.0</version>
+    </dependency>
 ```
 3. Вызвать в нужном месте объект ICanProxy
 ```java
